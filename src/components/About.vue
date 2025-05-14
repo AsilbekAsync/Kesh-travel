@@ -3,7 +3,6 @@
     id="about"
     class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden"
   >
-    <!-- Background Effects -->
     <div class="absolute top-0 left-0 w-full h-full">
       <div
         class="absolute top-10 left-10 w-40 h-40 bg-primary-500 rounded-full opacity-10 animate-pulse-slow"

@@ -1,7 +1,7 @@
 <template>
   <section
     id="contact"
-    class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+    class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden pattern-topography"
   >
     <div class="absolute top-0 left-0 w-full h-full">
       <div
@@ -43,7 +43,7 @@
               :key="index"
             >
               <div class="mr-4 mt-1 bg-white bg-opacity-20 p-3 rounded-full">
-                <i :class="info.icon" class="text-xl"></i>
+                <component :is="info.icon" />
               </div>
               <div>
                 <h4 class="text-xl font-semibold mb-1">{{ info.title }}</h4>
@@ -63,7 +63,7 @@
                 rel="noopener"
                 class="bg-white bg-opacity-20 hover:bg-opacity-30 w-10 h-10 rounded-full flex items-center justify-center transition"
               >
-                <i :class="link.icon"></i>
+                <component :is="link.icon" />
               </a>
             </div>
           </div>
@@ -167,7 +167,7 @@
 
             <button
               type="submit"
-              class="w-full bg-primary-500 hover:opacity-90 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105"
+              class="w-full bg-primary-500 hover:opacity-90 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform"
             >
               Xabar yuborish
             </button>
@@ -180,6 +180,13 @@
 
 <script setup>
 import { ref } from "vue";
+import { Map, Mail, Clock, Phone } from "lucide-vue-next";
+import {
+  IconBrandTelegram,
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTwitter,
+} from "@tabler/icons-vue";
 
 const form = ref({
   fullName: "",
@@ -191,28 +198,27 @@ const form = ref({
 
 const submitForm = () => {
   console.log("Form yuborildi:", form.value);
-  // Here you can send form.value via fetch/axios to your backend
   alert("Xabaringiz yuborildi!");
 };
 
 const contactInfo = [
   {
-    icon: "fas fa-map-marker-alt",
+    icon: Map,
     title: "Bizning manzil",
     details: ["123 Sayohat ko'chasi, Toshkent, O'zbekiston"],
   },
   {
-    icon: "fas fa-phone-alt",
+    icon: Phone,
     title: "Telefon raqami",
     details: ["+998 (90) 123-4567", "+998 (90) 987-6543"],
   },
   {
-    icon: "fas fa-envelope",
+    icon: Mail,
     title: "Elektron pochta",
     details: ["info@brandsayohat.uz", "qollab-quvvatlash@brandsayohat.uz"],
   },
   {
-    icon: "fas fa-clock",
+    icon: Clock,
     title: "Ish vaqti",
     details: [
       "Dushanba - Juma: 9:00 - 18:00",
@@ -223,15 +229,15 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { href: "#", icon: "fab fa-facebook-f" },
-  { href: "#", icon: "fab fa-twitter" },
-  { href: "#", icon: "fab fa-instagram" },
-  { href: "#", icon: "fab fa-telegram" },
+  { href: "#!", icon: IconBrandFacebook },
+  { href: "#!", icon: IconBrandTwitter },
+  { href: "#!", icon: IconBrandInstagram },
+  { href: "#!", icon: IconBrandTelegram },
 ];
 </script>
 
 <style scoped>
 .input {
-  @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white;
+  @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white;
 }
 </style>

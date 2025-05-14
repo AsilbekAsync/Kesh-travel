@@ -1,17 +1,15 @@
 <template>
   <nav
-    class="fixed w-full top-0 z-40 transition-all duration-300 backdrop-blur-3xl py-2 dark:bg-gray-900 dark:text-white text-gray-800 shadow-sm"
+    class="fixed w-full top-0 z-40 transition-all duration-300 py-2 shadow-sm bg-white dark:bg-gray-800 dark:text-white"
   >
     <div class="px-4 md:px-6">
       <div class="flex justify-between items-center">
-        <!-- Logo -->
         <a href="#" class="text-2xl font-bold flex items-center">
           <span class="dark:text-primary-400 text-primary-500">
             Kesh travel
           </span>
         </a>
 
-        <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-3">
           <a
             v-for="(link, id) in links"
@@ -174,12 +172,10 @@ import {
 } from "lucide-vue-next";
 import { ref, watch } from "vue";
 
-// State management
 const isMenuOpen = ref(false);
 const isDarkMode = ref(false);
 const isLangDropdownOpen = ref(false);
 
-// Navigation links
 const links = ref([
   { name: "Bosh sahifa", href: "#home" },
   { name: "Mashhur sayohatlar", href: "#hot-travels" },
@@ -191,11 +187,9 @@ const links = ref([
   { name: "Aloqa", href: "#contact" },
 ]);
 
-// Language options
 const languages = ref(["O'zbek", "Ruskiy", "English"]);
 const currentLanguage = ref("O'zbek");
 
-// Toggle functions
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
   if (isMenuOpen.value) isLangDropdownOpen.value = false;

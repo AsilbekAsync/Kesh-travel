@@ -25,7 +25,8 @@
           v-for="(faq, index) in faqs"
           :key="index"
           class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg overflow-hidden transition-all"
-          :style="{ transitionDelay: `${index * 50}ms` }"
+          :data-aos="'fade-up'"
+          :data-aos-delay="50 * (index + 1)"
         >
           <button
             class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition"
@@ -43,7 +44,7 @@
             />
           </button>
           <div
-            v-show="openIndex === index"
+            v-if="openIndex === index"
             class="px-5 pb-5 text-gray-600 dark:text-gray-300"
           >
             <p>{{ faq.answer }}</p>
@@ -86,6 +87,46 @@ const faqs = [
     question: "Tur paketlaringizga nimalar kiradi?",
     answer:
       "Bizning tur paketlarimizga odatda turar joy, manzil ichidagi transport, yo'l ko'rsatuvchi bilan ekskursiyalar...",
+  },
+  {
+    question: "Sayohat yo'nalishimni o'zgartirishim mumkinmi?",
+    answer:
+      "Albatta! Biz moslashtirilgan sayohatlarni qo'llab-quvvatlaymiz. Agar sizda o'zgartirish kiritish istagi bo'lsa, biz bilan bog'laning.",
+  },
+  {
+    question: "Bekor qilish siyosatingiz qanday?",
+    answer:
+      "Bekor qilish siyosatimiz turga va bekor qilish sanasiga qarab farq qiladi. Batafsil ma'lumot uchun har bir tur sahifasini tekshiring.",
+  },
+  {
+    question: "Sayohat sug'urtasi kerakmi?",
+    answer:
+      "Sayohat sug'urtasi majburiy emas, ammo biz uni barcha sayohatchilar uchun qat'iy tavsiya qilamiz.",
+  },
+  {
+    question: "Xalqaro sayohat uchun qanday hujjatlar kerak?",
+    answer:
+      "Odatda, amal qilish muddati kamida 6 oy qolgan pasport va viza kerak bo'ladi. Yonalishga qarab, boshqa hujjatlar ham kerak bo'lishi mumkin.",
+  },
+  {
+    question: "Tur guruhlarida odatda nechta odam bo'ladi?",
+    answer:
+      "Bizning guruhlar kichik va qulay bo'lishi uchun odatda 10-20 ishtirokchidan iborat bo'ladi.",
+  },
+  {
+    question: "Turlar uchun to'lov rejalarini taklif qilasizmi?",
+    answer:
+      "Ha, biz ba'zi turlar uchun bo'lib to'lash imkoniyatini taklif qilamiz. Tafsilotlar uchun biz bilan bog'laning.",
+  },
+  {
+    question: "Aeroportga olib borish/xizmatlar mavjudmi?",
+    answer:
+      "Ko'pchilik turlarimizda aeroportdan kutib olish va jo'natish xizmatlari mavjud. Bu xizmat turga qarab o'zgaradi.",
+  },
+  {
+    question: "Agar ob-havo yomon bo‘lsa, nima bo‘ladi?",
+    answer:
+      "Ob-havo yomon bo‘lsa, xavfsizlikni birinchi o‘ringa qo‘yamiz va zarur bo‘lsa, jadvalga o‘zgartirishlar kiritamiz.",
   },
 ];
 </script>

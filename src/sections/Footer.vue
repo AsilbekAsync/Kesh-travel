@@ -1,9 +1,46 @@
 <script setup lang="ts">
-import { PlaneIcon } from "lucide-vue-next";
+import {
+  IconBrandFacebook,
+  IconBrandTwitter,
+  IconBrandInstagram,
+  IconBrandTelegram,
+} from "@tabler/icons-vue";
+import { Plane } from "lucide-vue-next";
+
+const socialLinks = [
+  { icon: IconBrandFacebook, url: "#" },
+  { icon: IconBrandTwitter, url: "#" },
+  { icon: IconBrandInstagram, url: "#" },
+  { icon: IconBrandTelegram, url: "#" },
+];
+
+const quickLinks = [
+  { label: "Bosh sahifa", href: "#home" },
+  { label: "Biz haqimizda", href: "#about" },
+  { label: "Turlar", href: "#tours" },
+  { label: "Galereya", href: "#gallery" },
+  { label: "Sharhlar", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Aloqa", href: "#contact" },
+];
+
+const popularDestinations = [
+  "Bali, Indoneziya",
+  "Parij, Fransiya",
+  "Santorini, Gretsiya",
+  "Tokio, Yaponiya",
+  "Nyu-York, AQSH",
+  "Maldiv orollari",
+  "Venetsiya, Italiya",
+];
 </script>
 
 <template>
-  <footer class="bg-gray-900 text-white pt-16 pb-8 relative overflow-hidden">
+  <footer
+    id="footer"
+    class="bg-gray-900 text-white pt-16 pb-8 relative overflow-hidden"
+  >
+    <!-- Decorative Background Blobs -->
     <div class="absolute top-0 left-0 w-full h-full">
       <div
         class="absolute top-20 right-20 w-64 h-64 bg-primary-500 rounded-full opacity-5"
@@ -15,11 +52,12 @@ import { PlaneIcon } from "lucide-vue-next";
 
     <div class="container mx-auto px-4 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand & Socials -->
         <div data-aos="fade-up" data-aos-delay="100">
           <a href="#" class="inline-block mb-6">
             <div class="flex items-center">
               <span class="bg-gradient-primary text-white p-2 rounded-lg mr-2">
-                <PlaneIcon class="h-5 w-5 text-primary-500 animate-float" />
+                <Plane class="h-5 w-5 text-primary-500 animate-float" />
               </span>
               <span class="text-2xl font-bold bg-clip-text text-primary-500">
                 Kesh travel
@@ -27,148 +65,53 @@ import { PlaneIcon } from "lucide-vue-next";
             </div>
           </a>
           <p class="text-gray-400 mb-6">
-            Brand Sayohat A gentligi 2008 yildan beri unutilmas sayohat
+            Brand Sayohat Agentligi 2008 yildan beri unutilmas sayohat
             tajribalarini yaratib kelmoqda. Bizning vazifamiz sizga dunyoni
             qulaylik va uslubda kashf etishga yordam berishdir.
           </p>
           <div class="flex space-x-4">
             <a
-              href="#"
+              v-for="(link, index) in socialLinks"
+              :key="index"
+              :href="link.url"
               class="text-gray-400 hover:text-primary-400 transition-colors"
             >
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a
-              href="#"
-              class="text-gray-400 hover:text-primary-400 transition-colors"
-            >
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a
-              href="#"
-              class="text-gray-400 hover:text-primary-400 transition-colors"
-            >
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a
-              href="#"
-              class="text-gray-400 hover:text-primary-400 transition-colors"
-            >
-              <i class="fab fa-telegram"></i>
+              <component :is="link.icon" class="w-5 h-5" />
             </a>
           </div>
         </div>
 
+        <!-- Quick Links -->
         <div data-aos="fade-up" data-aos-delay="200">
           <h4 class="text-xl font-bold mb-6">Tezkor havolalar</h4>
           <ul class="space-y-3">
-            <li>
+            <li v-for="(link, index) in quickLinks" :key="index">
               <a
-                href="#home"
+                :href="link.href"
                 class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Bosh sahifa</a
               >
-            </li>
-            <li>
-              <a
-                href="#about"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Biz haqimizda</a
-              >
-            </li>
-            <li>
-              <a
-                href="#tours"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Turlar</a
-              >
-            </li>
-            <li>
-              <a
-                href="#gallery"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Galereya</a
-              >
-            </li>
-            <li>
-              <a
-                href="#testimonials"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Sharhlar</a
-              >
-            </li>
-            <li>
-              <a
-                href="#faq"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >FAQ</a
-              >
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Aloqa</a
-              >
+                {{ link.label }}
+              </a>
             </li>
           </ul>
         </div>
 
+        <!-- Popular Destinations -->
         <div data-aos="fade-up" data-aos-delay="300">
           <h4 class="text-xl font-bold mb-6">Mashhur yo'nalishlar</h4>
           <ul class="space-y-3">
-            <li>
+            <li v-for="(place, index) in popularDestinations" :key="index">
               <a
-                href="#"
+                href="#hot-travels"
                 class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Bali, Indoneziya</a
               >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Parij, Fransiya</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Santorini, Gretsiya</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Tokio, Yaponiya</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Nyu-York, AQSH</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Maldiv orollari</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-gray-400 hover:text-primary-400 transition-colors"
-                >Venetsiya, Italiya</a
-              >
+                {{ place }}
+              </a>
             </li>
           </ul>
         </div>
 
+        <!-- Newsletter -->
         <div data-aos="fade-up" data-aos-delay="400">
           <h4 class="text-xl font-bold mb-6">Yangiliklar</h4>
           <p class="text-gray-400 mb-4">
@@ -180,13 +123,13 @@ import { PlaneIcon } from "lucide-vue-next";
               <input
                 type="email"
                 placeholder="Elektron pochta manzilingiz"
-                class="w-full px-4 py-3 rounded-l-lg focus:outline-none text-gray-800 border-2 border-r-0 border-primary-500"
+                class="w-full px-4 py-3 rounded-l-lg bg-transparent text-white focus:outline-none border-2 border-r-0 border-gray-500 focus:border-primary-500"
               />
               <button
                 type="submit"
                 class="bg-gradient-primary hover:opacity-90 px-4 py-3 rounded-r-lg transition"
               >
-                <i class="fas fa-paper-plane"></i>
+                <Plane class="w-5 h-5" />
               </button>
             </div>
           </form>
@@ -197,6 +140,7 @@ import { PlaneIcon } from "lucide-vue-next";
         </div>
       </div>
 
+      <!-- Footer Bottom -->
       <div class="pt-8 border-t border-gray-800 text-center">
         <p class="text-gray-400 mb-4">
           &copy; 2025 Brand Sayohat. Barcha huquqlar himoyalangan.
@@ -216,9 +160,11 @@ import { PlaneIcon } from "lucide-vue-next";
           Dasturchi:
           <a
             href="https://t.me/Async_Boy"
+            target="_blank"
             class="text-primary-400 hover:text-primary-300 transition-colors"
-            >Kamoliddinov Asilbek</a
           >
+            Kamoliddinov Asilbek
+          </a>
         </p>
       </div>
     </div>
