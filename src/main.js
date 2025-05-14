@@ -1,11 +1,14 @@
-import './assets/main.css'
+import "./main.css";
+import "aos/dist/aos.css";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+import Ripple from "vue3-whr-ripple-directive";
 
-app.use(router)
-
-app.mount('#app')
+const app = createApp(App);
+app.use(router);
+app.config.globalProperties.$brand = "Kesh travel";
+app.directive("ripple", Ripple);
+app.mount("#app");
